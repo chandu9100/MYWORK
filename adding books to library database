@@ -1,0 +1,40 @@
+def fun(i):
+    ch=""
+    while(i>0):
+        if(i%26==0):
+            ch+='z'
+            i//=27
+        else:
+            ch+=chr((i%26)+96)
+            i=i//26
+    if(len(ch)>1):
+        ch=ch[::-1]
+    return ch
+n=int(input())
+l=[]
+for j in range(1,n+1):
+    k=fun(j)
+    l.append(k)
+#print(l)
+l1=[]
+for i in range(n):
+    l1.append(input())
+for i in range(len(l1)):
+    if(l1[i]!="?"):
+        for j in range(len(l)):
+            if(l1[i]==l[j]):
+               l[j]="$"
+               break
+for i in range(len(l1)):
+    if(l1[i]=="?"):
+        for j in range(len(l)):
+            if(l[j]!="$"):
+                l1[i]=l[j]
+                l[j]="$"
+                break
+for i in l1:
+    print(i)
+               
+
+            
+    
